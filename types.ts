@@ -1,26 +1,28 @@
-export enum Tab {
-  VIDEO_GENERATOR = 'video_generator',
-  BATCH_GENERATOR = 'batch_generator',
-  IMAGE_GENERATOR = 'image_generator',
-  PROMPT_GENERATOR = 'prompt_generator',
+export enum Topic {
+    Animation = "Animasi",
+    Song = "Lagu",
+    Story = "Cerita",
+    Animal = "Hewan",
+    Adventure = "Petualangan",
+    Education = "Edukasi",
 }
 
-export interface GenerationState {
-  isGenerating: boolean;
-  progress: number;
-  message: string;
-  status: 'idle' | 'generating' | 'success' | 'error';
+export enum Language {
+    Both = "Keduanya",
+    Indonesia = "Indonesia",
+    English = "English",
 }
 
-export interface BatchSegment {
-  id: string;
-  prompt: string;
-  image?: File;
-  videoUrl?: string;
-  status: 'idle' | 'generating' | 'success' | 'error';
+export interface ScenePrompt {
+    sceneNumber: number;
+    indonesianPrompt: string;
+    englishPrompt: string;
+    visualDescription: string;
 }
 
-export interface PromptGeneratorTabProps {
-  onSendToBatch: (script: string) => void;
-  apiKey?: string;
+export interface GenerationResult {
+    scenes: number;
+    duration: number;
+    topic: Topic;
+    prompts: ScenePrompt[];
 }
